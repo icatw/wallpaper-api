@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icatw.wallpaperapi.mapper.PaperMapper">
+
+    <resultMap type="com.icatw.wallpaperapi.domain.Paper" id="PaperMap">
+        <result property="paperId" column="paper_id" jdbcType="INTEGER"/>
+        <result property="paperName" column="paper_name" jdbcType="VARCHAR"/>
+        <result property="paperUrl" column="paper_url" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="paperSize" column="paper_size" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询指定行数据-->
+    <select id="selectPaperList" resultMap="PaperMap">
+        select
+        paper_id, paper_name, paper_url, create_time, update_time, is_deleted, type_id, paper_size
+        from wallpaper_paper
+        <where>
+            <if test="paperId != null">
+                and paper_id = #{paperId}
+            </if>
+            <if test="paperName != null and paperName != ''">
+                and paper_name = #{paperName}
+            </if>
+            <if test="paperUrl != null and paperUrl != ''">
+                and paper_url = #{paperUrl}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
+            </if>
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="paperSize != null and paperSize != ''">
+                and paper_size = #{paperSize}
+            </if>
+        </where>
+    </select>
+</mapper>
