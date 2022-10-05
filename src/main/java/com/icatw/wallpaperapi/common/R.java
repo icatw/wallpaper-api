@@ -30,7 +30,9 @@ public class R {
     public static R fail(Integer code, String msg) {
         return new R(code, msg, null);
     }
-
+    public static R fail(ResultStatusEnum resultStatusEnum) {
+        return new R(resultStatusEnum.getCode(), resultStatusEnum.getMessage(), null);
+    }
     public static R fail() {
         return new R(ResultStatusEnum.SYSTEM_EXCEPTION.getCode(), ResultStatusEnum.SYSTEM_EXCEPTION.getMessage(), null);
     }

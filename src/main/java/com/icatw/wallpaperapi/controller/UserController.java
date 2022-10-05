@@ -35,9 +35,17 @@ public class UserController {
     @ApiOperation(value = "登陆")
     @PostMapping("/login")
     public R login(@RequestBody User user) {
-        return R.ok(this.userService.login(user));
+        return this.userService.login(user);
     }
 
+    /**
+     * 新增数据
+     */
+    @ApiOperation(value = "注册")
+    @PostMapping("/register")
+    public R register(@RequestBody User user) {
+        return this.userService.register(user);
+    }
 
     /**
      * 分页查询所有数据

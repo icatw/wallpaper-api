@@ -1,7 +1,8 @@
 package com.icatw.wallpaperapi.service;
 
-import com.icatw.wallpaperapi.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.icatw.wallpaperapi.common.R;
+import com.icatw.wallpaperapi.domain.User;
 
 /**
  * 壁纸用户表(User)表服务接口
@@ -16,6 +17,12 @@ public interface UserService extends IService<User> {
      * @param user 用户
      * @return {@link Object}
      */
-    Object login(User user);
+    R login(User user);
+
+    /**
+     * @param user 用户
+     * @return {@link R}
+     */
+    R register(User user);
 }
 
